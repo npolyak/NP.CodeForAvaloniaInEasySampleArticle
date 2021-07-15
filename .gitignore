@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/NP.Demos.BuiltInControls/.vs
+/NP.Demos.BuiltInControls/bin/Debug/net5.0
+/NP.Demos.BuiltInControls/obj
+/NP.Demos.SimpleAvaloniaProject/.vs
+/NP.Demos.SimpleAvaloniaProject/bin/Debug/net5.0
+/NP.Demos.SimpleAvaloniaProject/obj
