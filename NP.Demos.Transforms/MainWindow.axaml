@@ -57,7 +57,7 @@
               Grid.Column="2">
           <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
           </Grid.RowDefinitions>
           <TextBlock Text="Render Rotate Transform Sample:"
                      Classes="h1"/>
@@ -85,7 +85,7 @@
               Grid.Column="4">
           <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
           </Grid.RowDefinitions>
           <TextBlock Text="Layout Rotate Transform Sample:"
                      Classes="h1"/>
