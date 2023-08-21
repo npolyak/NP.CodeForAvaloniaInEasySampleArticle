@@ -131,11 +131,11 @@
                                Center="50%, 50%"
                                Radius="0.5" >
             <RadialGradientBrush.GradientStops>
-              <GradientStop Offset="0" Color="Red"/>
-              <GradientStop Offset="0.25" Color="Blue"/>
-              <GradientStop Offset="0.5" Color="Brown"/>
-              <GradientStop Offset="0.75" Color="Green"/>
-              <GradientStop Offset="1" Color="Purple"/>
+              <GradientStop Offset="0" Color="Yellow"/>
+              <GradientStop Offset="0.25" Color="red"/>
+              <GradientStop Offset="0.5" Color="Yellow"/>
+              <GradientStop Offset="0.75" Color="Orange"/>
+              <GradientStop Offset="1" Color="Green"/>
             </RadialGradientBrush.GradientStops>
           </RadialGradientBrush>
         </Button.Background>

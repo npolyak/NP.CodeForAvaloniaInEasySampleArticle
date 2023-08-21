@@ -3,14 +3,17 @@ using Avalonia.Media;
 using System;
 using System.Globalization;
 
-namespace NP.Demos.Primitives
+// Basic sample to learn about IValueConverter and IMultiValueConverter. 
+// https://github.com/dolbilov/ValueConvertersSample
+
+namespace NP.Demos.Primitives.Converters
 {
     public class BoolToBrushConverter : IValueConverter
     {
         public IBrush? FalseBrush { get; set; }
         public IBrush? TrueBrush { get; set; }
 
-        public object? Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
             if (value is bool b)
             {
@@ -20,7 +23,7 @@ namespace NP.Demos.Primitives
             return FalseBrush;
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        public object ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
         }
