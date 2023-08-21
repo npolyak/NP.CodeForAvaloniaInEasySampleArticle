@@ -12,7 +12,7 @@
         Height="320"
         Title="Primitives">
 	<Window.Resources>
-		<!--  Add the BoolToBrushConverter. Remember to add the needed namespace "local" -->
+		<!--  Add the BoolToBrushConverter. Remember to add the needed namespace "conv" -->
 		<conv:BoolToBrushConverter x:Key="BoolToBrushConverter" TrueBrush="Green" FalseBrush="Red" />
 		<conv:EnumTypeToCollectionConverter x:Key="EnumTypeToCollectionConverter" />
 	</Window.Resources>	
@@ -126,7 +126,7 @@
             Margin="10">
         <Grid.Resources>
           <ResourceDictionary>
-            <conv:BoolToBrushConverter x:Key="FillConverter" TrueBrush="Green" FalseBrush="Red"/>
+            <conv:BoolToBrushConverter x:Key="FillConverter" TrueBrush="Green" />
           </ResourceDictionary>
         </Grid.Resources>
         <StackPanel VerticalAlignment="Top"
@@ -146,23 +146,6 @@
 				</ComboBox.ItemTemplate>
 			</ComboBox>
 
-			<ComboBox>
-				<ComboBox.Items>
-					<col:ArrayList>
-						<sys:String>Hello</sys:String>
-						<sys:String>World</sys:String>
-					</col:ArrayList>
-				</ComboBox.Items>
-				<ComboBox.ItemTemplate>
-					<DataTemplate>
-						<Panel>
-							<TextBlock Text="{Binding}" />
-						</Panel>
-					</DataTemplate>
-				</ComboBox.ItemTemplate>
-			</ComboBox>
-
-
 			<TextBlock Text="Choose Stroke Thickness"
                      Margin="0,20,0,0"/>
           <Slider x:Name="ThicknessSlider"
@@ -178,6 +161,23 @@
                      Margin="0,20,0,0"/>
           <CheckBox x:Name="HasFillCheckBox"
                     Content="Has Fill"/>
+
+			<TextBlock Text="Extra"
+								 Margin="0,20,0,0"/>
+			<ComboBox>
+				<ComboBox.ItemsSource>
+					<col:ArrayList>
+						<sys:String>Hello</sys:String>
+						<sys:String>World</sys:String>
+					</col:ArrayList>
+				</ComboBox.ItemsSource>
+				<ComboBox.ItemTemplate>
+					<DataTemplate>
+						<TextBlock Text="{Binding}" />
+					</DataTemplate>
+				</ComboBox.ItemTemplate>
+			</ComboBox>
+			
         </StackPanel>
         <Grid ColumnDefinitions="*, *, *, *"
               Margin="20,10,10,10"

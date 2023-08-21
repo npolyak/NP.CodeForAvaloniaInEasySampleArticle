@@ -14,7 +14,8 @@ namespace NP.Demos.Primitives.Converters
         {
             Type enumType = value as Type ?? targetType;
 
-            return new ArrayList(Enum.GetValues(enumType));
+            return Enum.GetValues(enumType);
+            //return new ArrayList(Enum.GetValues(enumType));
         }
 
         public object ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
