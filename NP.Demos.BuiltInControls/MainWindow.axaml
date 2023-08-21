@@ -245,7 +245,6 @@
         <Popup x:Name="ThePopup"
                Grid.Row="1"
                IsOpen="{Binding Path=IsChecked, ElementName=OpenClosePopupButton, Mode=TwoWay}"
-               StaysOpen="False"
                PlacementMode="Bottom"
                PlacementTarget="{Binding ElementName=OpenClosePopupButton}">
           <Grid x:Name="PopupsContent"
