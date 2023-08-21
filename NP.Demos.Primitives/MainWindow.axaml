@@ -2,12 +2,20 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:col="using:System.Collections"
+		xmlns:sys="using:System"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         xmlns:local="clr-namespace:NP.Demos.Primitives"
+		xmlns:conv="clr-namespace:NP.Demos.Primitives.Converters"
         x:Class="NP.Demos.Primitives.MainWindow"
         Width="800"
         Height="320"
         Title="Primitives">
+	<Window.Resources>
+		<!--  Add the BoolToBrushConverter. Remember to add the needed namespace "local" -->
+		<conv:BoolToBrushConverter x:Key="BoolToBrushConverter" TrueBrush="Green" FalseBrush="Red" />
+		<conv:EnumTypeToCollectionConverter x:Key="EnumTypeToCollectionConverter" />
+	</Window.Resources>	
   <Window.Styles>
     <Style Selector="TextBlock.h1">
       <Setter Property="FontWeight"
@@ -55,11 +63,17 @@
           <StackPanel VerticalAlignment="Top"
                       HorizontalAlignment="Center">
             <TextBlock Text="Choose Stretch Type"/>
-            <ComboBox x:Name="StretchChooser" 
-                      Items="{Binding Source={x:Type Stretch}, Converter={x:Static local:EnumTypeToCollectionConverter.Instance}}"
-                      Width="100"
-                      Height="30"
-                      Margin="10"/>
+			  <ComboBox x:Name="StretchChooser"
+						ItemsSource="{Binding Source={x:Type Stretch}, Converter={StaticResource EnumTypeToCollectionConverter}}"
+						Width="100"
+						Height="30"
+						Margin="10">
+				  <ComboBox.ItemTemplate>
+					  <DataTemplate>
+						   <TextBlock Text="{Binding}" />
+					  </DataTemplate>
+				  </ComboBox.ItemTemplate>
+			  </ComboBox>
           </StackPanel>
           <Viewbox x:Name="TheViewBox" 
                    Stretch="{Binding Path=SelectedItem, ElementName=StretchChooser, Mode=TwoWay}"
@@ -88,11 +102,17 @@
         <StackPanel VerticalAlignment="Top"
                     HorizontalAlignment="Center">
           <TextBlock Text="Choose Stretch Type"/>
-          <ComboBox x:Name="ImageStretchChooser"
-                    Items="{Binding Source={x:Type Stretch}, Converter={x:Static local:EnumTypeToCollectionConverter.Instance}}"
-                    Width="100"
-                    Height="30"
-                    Margin="10"/>
+			<ComboBox x:Name="ImageStretchChooser"
+					  ItemsSource="{Binding Source={x:Type Stretch}, Converter={StaticResource EnumTypeToCollectionConverter}}"
+					  Width="100"
+					  Height="30"
+					  Margin="10">
+				<ComboBox.ItemTemplate>
+					<DataTemplate>
+						<TextBlock Text="{Binding}" />
+					</DataTemplate>
+				</ComboBox.ItemTemplate>
+			</ComboBox>
         </StackPanel>
         <Grid Grid.Column="1">
           <Image x:Name="TheImage"
@@ -106,22 +126,44 @@
             Margin="10">
         <Grid.Resources>
           <ResourceDictionary>
-            <local:BoolToBrushConverter x:Key="FillConverter"
-                                        TrueBrush="Red"/>
+            <conv:BoolToBrushConverter x:Key="FillConverter" TrueBrush="Green" FalseBrush="Red"/>
           </ResourceDictionary>
         </Grid.Resources>
         <StackPanel VerticalAlignment="Top"
                     HorizontalAlignment="Center"
                     Margin="0,0,20,0">
           <TextBlock Text="Choose Stretch Type"/>
-          <ComboBox x:Name="ShapeStretchChooser"
-                    Items="{Binding Source={x:Type Stretch}, Converter={x:Static local:EnumTypeToCollectionConverter.Instance}}"
-                    SelectedIndex="2"
-                    Width="100"
-                    Height="30"
-                    Margin="10"/>
+			<ComboBox x:Name="ShapeStretchChooser"
+					  ItemsSource="{Binding Source={x:Type Stretch}, Converter={StaticResource EnumTypeToCollectionConverter}}"
+					  SelectedIndex="2"
+					  Width="100"
+					  Height="30"
+					  Margin="10">
+				<ComboBox.ItemTemplate>
+					<DataTemplate>
+							<TextBlock Text="{Binding}" />
+					</DataTemplate>
+				</ComboBox.ItemTemplate>
+			</ComboBox>
 
-          <TextBlock Text="Choose Stroke Thickness"
+			<ComboBox>
+				<ComboBox.Items>
+					<col:ArrayList>
+						<sys:String>Hello</sys:String>
+						<sys:String>World</sys:String>
+					</col:ArrayList>
+				</ComboBox.Items>
+				<ComboBox.ItemTemplate>
+					<DataTemplate>
+						<Panel>
+							<TextBlock Text="{Binding}" />
+						</Panel>
+					</DataTemplate>
+				</ComboBox.ItemTemplate>
+			</ComboBox>
+
+
+			<TextBlock Text="Choose Stroke Thickness"
                      Margin="0,20,0,0"/>
           <Slider x:Name="ThicknessSlider"
                   Value="1"
